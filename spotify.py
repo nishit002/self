@@ -20,16 +20,13 @@ def create_presentation():
     title_2 = slide_2.shapes.title
     title_2.text = "Introduction"
     
-    # Instead of placeholders, let's add a new textbox and fill it with text
-    text_box = slide_2.shapes.title
+    # Add text and paragraphs to the slide
+    text_box = slide_2.shapes[1].text_frame
+    text_box.clear()
     text_box.text = "Spotify was founded in 2006 by Daniel Ek and Martin Lorentzon in Sweden."
-    
-    # Add paragraphs
-    text_frame = slide_2.shapes[1].text_frame
-    text_frame.clear()
-    p = text_frame.add_paragraph("• Aimed to address illegal music downloads.")
-    p = text_frame.add_paragraph("• Offers over 30 million songs for streaming.")
-    p = text_frame.add_paragraph("• Key challenges include securing licensing agreements and achieving profitability.")
+    text_box.add_paragraph("• Aimed to address illegal music downloads.")
+    text_box.add_paragraph("• Offers over 30 million songs for streaming.")
+    text_box.add_paragraph("• Key challenges include securing licensing agreements and achieving profitability.")
 
     # Slide 3: Key Financials
     slide_3 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -127,10 +124,14 @@ ax.set_xlabel('Year')
 ax.set_ylabel('Net Loss (in € millions)')
 st.pyplot(fig)
 
-# Download PowerPoint Presentation
-st.markdown("## Download the Detailed PowerPoint Presentation")
-prs = create_presentation()
-pptx_io = BytesIO()
-prs.save(pptx_io)
-pptx_io.seek(0)
-st.download_button(label="Download Presentation", data=pptx_io, file_name="Spotify_Detailed_Presentation_v5.pptx", mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+# Error Handling for PowerPoint Download
+try:
+    # Download PowerPoint Presentation
+    st.markdown("## Download the Detailed PowerPoint Presentation")
+    prs = create_presentation()
+    pptx_io = BytesIO()
+    prs.save(pptx_io)
+    pptx_io.seek(0)
+    st.download_button(label="Download Presentation", data=pptx_io, file_name="Spotify_Detailed_Presentation_v5.pptx", mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+except Exception as e:
+    st.error(f"An error occurred while generating the PowerPoint: {e}")
