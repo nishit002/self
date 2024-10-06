@@ -14,7 +14,7 @@ def create_presentation():
     title_1 = slide_1.shapes.title
     subtitle_1 = slide_1.placeholders[1]
     title_1.text = "Spotify: The Challenges of an Online Music Service"
-    subtitle_1.text = "Legal and Profitable\nYour Name\nDate"
+    subtitle_1.text = "Legal and Profitable\nPresented by: Your Name\nDate"
 
     # Slide 2: Introduction
     slide_2 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -31,6 +31,8 @@ def create_presentation():
     p.text = "• Offers over 30 million songs for streaming."
     p = text_box.add_paragraph()
     p.text = "• Key challenges include securing licensing agreements and achieving profitability."
+    p = text_box.add_paragraph()
+    p.text = "• Despite offering both free and premium services, profitability has remained a challenge due to high licensing fees."
 
     # Slide 3: Key Financials (2013-2014)
     slide_3 = prs.slides.add_slide(prs.slide_layouts[5])
@@ -72,7 +74,7 @@ def create_presentation():
     table.cell(4, 2).text = "Still dominated by Premium (~90%)"
 
     # Slide 4: Monetization Strategy and Freemium Model
-    slide_4 = prs.slides.add_slide(prs.slides.add_slide(prs.slide_layouts[1]))
+    slide_4 = prs.slides.add_slide(prs.slide_layouts[1])
     title_4 = slide_4.shapes.title
     title_4.text = "Monetization Strategy and Freemium Model"
     
@@ -86,6 +88,8 @@ def create_presentation():
     p.text = "• Premium accounts for 91% of total revenue."
     p = text_frame_4.add_paragraph()
     p.text = "• Only 20-27% of users convert to Premium."
+    p = text_frame_4.add_paragraph()
+    p.text = "• Heavy reliance on Premium for profitability, as advertising revenue remains low."
 
     # Slide 5: Competitors
     slide_5 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -94,12 +98,12 @@ def create_presentation():
     
     text_frame_5 = slide_5.shapes[1].text_frame
     text_frame_5.clear()
-    text_frame_5.text = "Competitors include:"
+    text_frame_5.text = "Spotify faces competition from major streaming services, including:"
     
     p = text_frame_5.add_paragraph()
     p.text = "• Apple Music (€9.99/month), Pandora (€4.99/month), Deezer (€9.99/month), Tidal (€19.99/month)."
     p = text_frame_5.add_paragraph()
-    p.text = "• Spotify has a competitive advantage through social integration (Facebook, Twitter)."
+    p.text = "• Spotify maintains an edge through social integration (Facebook, Twitter) and personalized features like Discover Weekly."
 
     # Slide 6: Financial Challenges and Path to Profitability
     slide_6 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -113,9 +117,13 @@ def create_presentation():
     p = text_frame_6.add_paragraph()
     p.text = "• High licensing fees, accounting for 70% of revenue."
     p = text_frame_6.add_paragraph()
-    p.text = "• Growing competition from Apple Music."
+    p.text = "• Spotify pays out 70% of its revenue to music rights holders, meaning costs grow with revenue."
     p = text_frame_6.add_paragraph()
-    p.text = "• Path to profitability requires increasing Premium conversions."
+    p.text = "• Growing competition from Apple Music, which offers exclusive artist deals."
+    p = text_frame_6.add_paragraph()
+    p.text = "• Path to profitability requires converting more free users to Premium subscriptions."
+    p = text_frame_6.add_paragraph()
+    p.text = "• Negotiating better licensing deals with record labels and increasing ad revenue from free users."
 
     # Slide 7: Conclusion
     slide_7 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -124,7 +132,14 @@ def create_presentation():
     
     text_frame_7 = slide_7.shapes[1].text_frame
     text_frame_7.clear()
-    text_frame_7.text = "Spotify has built a successful platform but faces challenges in achieving profitability."
+    text_frame_7.text = "Spotify has built a highly successful platform, but faces significant challenges in achieving profitability."
+    
+    p = text_frame_7.add_paragraph()
+    p.text = "• Licensing fees and revenue-sharing agreements weigh heavily on profitability."
+    p = text_frame_7.add_paragraph()
+    p.text = "• Spotify's success lies in continuing to innovate and convert more users to paid subscriptions."
+    p = text_frame_7.add_paragraph()
+    p.text = "• In the future, better licensing deals and expanding into new regions will be crucial."
 
     return prs
 
