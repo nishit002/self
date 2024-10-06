@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from pptx import Presentation
+from pptx.util import Inches
 from io import BytesIO
 
 # Function to create the PowerPoint file
@@ -20,12 +21,10 @@ def create_presentation():
     title_2 = slide_2.shapes.title
     title_2.text = "Introduction"
     
-    # Add text and paragraphs to the slide
     text_box = slide_2.shapes[1].text_frame
     text_box.clear()
     text_box.text = "Spotify was founded in 2006 by Daniel Ek and Martin Lorentzon in Sweden."
-    
-    # Add bullet points
+
     p = text_box.add_paragraph()
     p.text = "• Aimed to address illegal music downloads."
     p = text_box.add_paragraph()
@@ -33,24 +32,47 @@ def create_presentation():
     p = text_box.add_paragraph()
     p.text = "• Key challenges include securing licensing agreements and achieving profitability."
 
-    # Slide 3: Key Financials
-    slide_3 = prs.slides.add_slide(prs.slide_layouts[1])
+    # Slide 3: Key Financials (2013-2014)
+    slide_3 = prs.slides.add_slide(prs.slide_layouts[5])
     title_3 = slide_3.shapes.title
     title_3.text = "Key Financials (2013-2014)"
     
-    text_frame_3 = slide_3.shapes[1].text_frame
-    text_frame_3.clear()
-    text_frame_3.text = "Financial Metrics:"
-    
-    p = text_frame_3.add_paragraph()
-    p.text = "• Revenue (2013): €747 million | Revenue (2014): €1,080 million | Growth: +44.6%"
-    p = text_frame_3.add_paragraph()
-    p.text = "• Net Loss (2013): €93 million | Net Loss (2014): €162 million | Growth: +74%"
-    p = text_frame_3.add_paragraph()
-    p.text = "• Total Accumulated Losses (2014): €262 million"
+    # Add a table for financial data
+    rows = 5
+    cols = 3
+    left = Inches(0.5)
+    top = Inches(2.0)
+    width = Inches(9.0)
+    height = Inches(2.0)
 
-    # Slide 4: Monetization Strategy
-    slide_4 = prs.slides.add_slide(prs.slide_layouts[1])
+    table = slide_3.shapes.add_table(rows, cols, left, top, width, height).table
+    table.columns[0].width = Inches(2.0)
+    table.columns[1].width = Inches(3.5)
+    table.columns[2].width = Inches(3.5)
+
+    # Table content
+    table.cell(0, 0).text = "Financial Metric"
+    table.cell(0, 1).text = "2013"
+    table.cell(0, 2).text = "2014"
+    
+    table.cell(1, 0).text = "Revenue (€ millions)"
+    table.cell(1, 1).text = "747"
+    table.cell(1, 2).text = "1,080"
+    
+    table.cell(2, 0).text = "Net Loss (€ millions)"
+    table.cell(2, 1).text = "93"
+    table.cell(2, 2).text = "162"
+    
+    table.cell(3, 0).text = "Total Accumulated Losses (€ millions)"
+    table.cell(3, 1).text = "200"
+    table.cell(3, 2).text = "262"
+
+    table.cell(4, 0).text = "Subscription Revenue Contribution"
+    table.cell(4, 1).text = "91%"
+    table.cell(4, 2).text = "Still dominated by Premium (~90%)"
+
+    # Slide 4: Monetization Strategy and Freemium Model
+    slide_4 = prs.slides.add_slide(prs.slides.add_slide(prs.slide_layouts[1]))
     title_4 = slide_4.shapes.title
     title_4.text = "Monetization Strategy and Freemium Model"
     
@@ -62,6 +84,8 @@ def create_presentation():
     p.text = "• Free with ads or €9.99/month for Premium without ads."
     p = text_frame_4.add_paragraph()
     p.text = "• Premium accounts for 91% of total revenue."
+    p = text_frame_4.add_paragraph()
+    p.text = "• Only 20-27% of users convert to Premium."
 
     # Slide 5: Competitors
     slide_5 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -74,8 +98,10 @@ def create_presentation():
     
     p = text_frame_5.add_paragraph()
     p.text = "• Apple Music (€9.99/month), Pandora (€4.99/month), Deezer (€9.99/month), Tidal (€19.99/month)."
+    p = text_frame_5.add_paragraph()
+    p.text = "• Spotify has a competitive advantage through social integration (Facebook, Twitter)."
 
-    # Slide 6: Financial Challenges
+    # Slide 6: Financial Challenges and Path to Profitability
     slide_6 = prs.slides.add_slide(prs.slide_layouts[1])
     title_6 = slide_6.shapes.title
     title_6.text = "Financial Challenges and Path to Profitability"
