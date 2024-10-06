@@ -24,9 +24,14 @@ def create_presentation():
     text_box = slide_2.shapes[1].text_frame
     text_box.clear()
     text_box.text = "Spotify was founded in 2006 by Daniel Ek and Martin Lorentzon in Sweden."
-    text_box.add_paragraph("• Aimed to address illegal music downloads.")
-    text_box.add_paragraph("• Offers over 30 million songs for streaming.")
-    text_box.add_paragraph("• Key challenges include securing licensing agreements and achieving profitability.")
+    
+    # Add bullet points
+    p = text_box.add_paragraph()
+    p.text = "• Aimed to address illegal music downloads."
+    p = text_box.add_paragraph()
+    p.text = "• Offers over 30 million songs for streaming."
+    p = text_box.add_paragraph()
+    p.text = "• Key challenges include securing licensing agreements and achieving profitability."
 
     # Slide 3: Key Financials
     slide_3 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -36,9 +41,13 @@ def create_presentation():
     text_frame_3 = slide_3.shapes[1].text_frame
     text_frame_3.clear()
     text_frame_3.text = "Financial Metrics:"
-    text_frame_3.add_paragraph("• Revenue (2013): €747 million | Revenue (2014): €1,080 million | Growth: +44.6%")
-    text_frame_3.add_paragraph("• Net Loss (2013): €93 million | Net Loss (2014): €162 million | Growth: +74%")
-    text_frame_3.add_paragraph("• Total Accumulated Losses (2014): €262 million")
+    
+    p = text_frame_3.add_paragraph()
+    p.text = "• Revenue (2013): €747 million | Revenue (2014): €1,080 million | Growth: +44.6%"
+    p = text_frame_3.add_paragraph()
+    p.text = "• Net Loss (2013): €93 million | Net Loss (2014): €162 million | Growth: +74%"
+    p = text_frame_3.add_paragraph()
+    p.text = "• Total Accumulated Losses (2014): €262 million"
 
     # Slide 4: Monetization Strategy
     slide_4 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -48,8 +57,11 @@ def create_presentation():
     text_frame_4 = slide_4.shapes[1].text_frame
     text_frame_4.clear()
     text_frame_4.text = "Spotify operates under a freemium model."
-    text_frame_4.add_paragraph("• Free with ads or €9.99/month for Premium without ads.")
-    text_frame_4.add_paragraph("• Premium accounts for 91% of total revenue.")
+    
+    p = text_frame_4.add_paragraph()
+    p.text = "• Free with ads or €9.99/month for Premium without ads."
+    p = text_frame_4.add_paragraph()
+    p.text = "• Premium accounts for 91% of total revenue."
 
     # Slide 5: Competitors
     slide_5 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -59,7 +71,9 @@ def create_presentation():
     text_frame_5 = slide_5.shapes[1].text_frame
     text_frame_5.clear()
     text_frame_5.text = "Competitors include:"
-    text_frame_5.add_paragraph("• Apple Music (€9.99/month), Pandora (€4.99/month), Deezer (€9.99/month), Tidal (€19.99/month).")
+    
+    p = text_frame_5.add_paragraph()
+    p.text = "• Apple Music (€9.99/month), Pandora (€4.99/month), Deezer (€9.99/month), Tidal (€19.99/month)."
 
     # Slide 6: Financial Challenges
     slide_6 = prs.slides.add_slide(prs.slide_layouts[1])
@@ -69,9 +83,13 @@ def create_presentation():
     text_frame_6 = slide_6.shapes[1].text_frame
     text_frame_6.clear()
     text_frame_6.text = "Challenges include:"
-    text_frame_6.add_paragraph("• High licensing fees, accounting for 70% of revenue.")
-    text_frame_6.add_paragraph("• Growing competition from Apple Music.")
-    text_frame_6.add_paragraph("• Path to profitability requires increasing Premium conversions.")
+    
+    p = text_frame_6.add_paragraph()
+    p.text = "• High licensing fees, accounting for 70% of revenue."
+    p = text_frame_6.add_paragraph()
+    p.text = "• Growing competition from Apple Music."
+    p = text_frame_6.add_paragraph()
+    p.text = "• Path to profitability requires increasing Premium conversions."
 
     # Slide 7: Conclusion
     slide_7 = prs.slides.add_slide(prs.slide_layouts[1])
