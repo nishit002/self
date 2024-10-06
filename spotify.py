@@ -2,14 +2,21 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Streamlit App Title
+# Title Slide
 st.title("Spotify: The Challenges of an Online Music Service")
 
 # Introduction Section
 st.markdown("""
-## Overview
-Founded in 2006 by Daniel Ek and Martin Lorentzon, Spotify has grown to become one of the world’s leading music streaming services. The platform offers over 30 million songs, available for streaming under its freemium model. 
-While Spotify has been successful in disrupting the music industry, it faces major challenges around profitability, competition, and payouts to music rights holders.
+## Slide 2: Introduction
+### Spotify’s Background:
+- Founded in 2006 by Daniel Ek and Martin Lorentzon in Sweden.
+- Aimed to address the growing issue of illegal music downloads by offering a legal alternative for consumers.
+- Offers over 30 million songs, allowing users to stream music from any location with an internet connection.
+
+### Challenges for Spotify:
+- Securing licensing agreements with major record labels (Warner, Sony, Universal).
+- Profitability remains a challenge due to the 70% revenue share paid to music rights holders.
+- Ensuring fair compensation for artists while keeping subscription fees affordable.
 """)
 
 # Financial Data (2013-2014)
@@ -22,75 +29,97 @@ financial_data = {
 
 df = pd.DataFrame(financial_data)
 
+# Display Financial Data
+st.markdown("## Slide 3: Key Financials (2013-2014)")
+st.dataframe(df)
+
 # Revenue Growth Chart
 st.markdown("### Spotify Revenue Growth (2013-2014)")
 fig, ax = plt.subplots()
-ax.plot(df['Year'], df['Revenue (in € millions)'], marker='o', color='green', label='Revenue')
+ax.plot(df['Year'], df['Revenue (in € millions)'], marker='o', color='green')
 ax.set_xlabel('Year')
 ax.set_ylabel('Revenue (in € millions)')
-ax.set_title('Spotify Revenue Growth')
+ax.set_title('Spotify Revenue Growth (2013-2014)')
 st.pyplot(fig)
 
-# Net Loss Trend Chart
-st.markdown("### Spotify Net Loss Trend (2013-2014)")
+# Net Loss Chart
+st.markdown("### Spotify Net Loss (2013-2014)")
 fig, ax = plt.subplots()
-ax.bar(df['Year'], df['Net Loss (in € millions)'], color='red', label='Net Loss')
+ax.bar(df['Year'], df['Net Loss (in € millions)'], color='red')
 ax.set_xlabel('Year')
 ax.set_ylabel('Net Loss (in € millions)')
-ax.set_title('Spotify Net Loss Trend')
+ax.set_title('Spotify Net Loss (2013-2014)')
 st.pyplot(fig)
-
-# Financial Data Summary Table
-st.markdown("### Financial Summary")
-st.dataframe(df)
-
-# Competitor Comparison (Subscribers and Cost)
-st.markdown("### Spotify Competitors")
-competitor_data = {
-    'Competitor': ['Apple Music', 'Pandora', 'Deezer', 'Tidal'],
-    'Subscribers (millions)': [80, 78, 16, 3],
-    'Monthly Cost (€)': [9.99, 4.99, 9.99, 19.99]
-}
-
-df_competitors = pd.DataFrame(competitor_data)
-
-# Competitors Bar Chart (Subscribers)
-fig, ax = plt.subplots()
-ax.bar(df_competitors['Competitor'], df_competitors['Subscribers (millions)'], color=['blue', 'purple', 'green', 'orange'])
-ax.set_title('Competitors - Subscribers in Millions')
-ax.set_xlabel('Competitor')
-ax.set_ylabel('Subscribers (millions)')
-st.pyplot(fig)
-
-# Competitor Data Table
-st.dataframe(df_competitors)
 
 # Monetization Strategy and Freemium Model
 st.markdown("""
-### Monetization Strategy and Freemium Model
-Spotify operates under a **freemium** model. Users can stream music for free with ads or subscribe to **Premium** at €9.99 per month to enjoy ad-free music, offline downloads, and other perks. 
-However, only **20-27% of users** convert to Premium, which accounts for **91% of Spotify’s revenue**.
+## Slide 4: Monetization Strategy and Freemium Model
+### Freemium Model:
+- Free access with ads or €9.99/month for Premium with no ads and extra features like offline listening.
+- As of 2014, only 20-27% of users converted to Premium; majority use the ad-supported version.
+
+### Revenue Breakdown:
+- Less than 10% from advertising, 91% from Premium subscriptions.
+- Heavy reliance on Premium for profitability.
+
+### Challenges:
+- Growing competition, especially from Apple Music (launched 2015).
+- Struggle to convert more free users into paying subscribers.
 """)
 
-# Challenges Section
+# Spotify Competitors
+competitors_data = {
+    'Competitor': ['Apple Music', 'Pandora', 'Deezer', 'Tidal'],
+    'Service Overview': ['Tied to iTunes, with exclusive artist deals', 
+                         'U.S.-based, radio-style service', 
+                         'French streaming service', 
+                         'Focuses on high-quality audio'],
+    'Catalog Size (million songs)': [35, 32, 35, 25],
+    'Monthly Subscription Cost (€)': [9.99, 4.99, 9.99, 19.99]
+}
+
+df_competitors = pd.DataFrame(competitors_data)
+
+# Competitors Table
+st.markdown("## Slide 5: Spotify's Market Position")
+st.dataframe(df_competitors)
+
+# Competitors Chart
+fig, ax = plt.subplots()
+ax.bar(df_competitors['Competitor'], df_competitors['Monthly Subscription Cost (€)'], color=['blue', 'purple', 'green', 'orange'])
+ax.set_xlabel('Competitors')
+ax.set_ylabel('Monthly Subscription Cost (€)')
+ax.set_title('Spotify Competitors: Monthly Subscription Cost Comparison')
+st.pyplot(fig)
+
+# Financial Challenges and Path to Profitability
 st.markdown("""
-### Financial Challenges and Path to Profitability
-Despite Spotify's growing revenue, its net losses continue to widen, largely due to the **70% payout** to music rights holders. In 2014, Spotify had accumulated losses of **€262 million**. 
+## Slide 6: Financial Challenges and Path to Profitability
+### Revenue vs. Costs:
+- Spotify pays 70% of its gross revenue to rights holders.
+- Despite growth in revenue, high licensing fees result in ongoing net losses (€162 million in 2014).
 
-To reach profitability, Spotify must focus on:
-- **Increasing Premium conversions** from free users.
-- **Negotiating better licensing deals** with rights holders.
-- **Growing advertising revenue** from free-tier users.
+### Capital Investments:
+- Raised $300 million in external funding but faces continued losses.
+
+### Path to Profitability:
+- Increase Premium conversions from free users.
+- Negotiate better licensing deals to reduce content acquisition costs.
+- Expand into new regions and grow advertising revenue from free users.
 """)
 
-# Conclusion Section
+# Conclusion
 st.markdown("""
-### Conclusion
-Spotify’s journey as a disruptor in the music industry comes with its own set of challenges. The platform needs to convert more free users into paying subscribers and address the significant costs tied to licensing fees.
-Competition from Apple Music, Pandora, and other services adds further pressure. Spotify’s success hinges on finding a balance between growth and profitability.
+## Slide 7: Conclusion
+### Spotify’s Strategic Path:
+- Built a successful platform but profitability remains challenging due to reliance on Premium and high payouts to rights holders.
+
+### Challenges Ahead:
+- Balancing profitability, managing growing content acquisition costs, and competition from Apple Music.
+- Continued innovation and focus on converting free users into Premium subscribers.
 """)
 
-# Provide the option to download the PowerPoint file
-st.markdown("### Download the Detailed PowerPoint Presentation")
-with open("Spotify_Detailed_Presentation_v4.pptx", "rb") as f:
-    st.download_button(label="Download Presentation", data=f, file_name="Spotify_Detailed_Presentation_v4.pptx", mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
+# Download the PowerPoint File
+st.markdown("## Download the Detailed PowerPoint Presentation")
+with open("Spotify_Detailed_Presentation_v5.pptx", "rb") as f:
+    st.download_button(label="Download Presentation", data=f, file_name="Spotify_Detailed_Presentation_v5.pptx", mime="application/vnd.openxmlformats-officedocument.presentationml.presentation")
